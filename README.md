@@ -8,9 +8,11 @@ styled in the brand's gold + baby-pink palette.
 ```
 index.html      # the page
 styles.css      # gold / blush / cream theme
-script.js       # scroll reveals, animated stat counters, mobile menu, contact form
+script.js       # scroll reveals, mobile menu, contact form
 assets/
-  logo.svg      # gold emblem (pregnant-woman silhouette + sound waves)
+  logo.png      # full official logo (emblem + wordmark)
+  emblem.png    # circular emblem only (used in header / hero / footer)
+  marianna.png  # instructor photo
 ```
 
 ## Run locally
@@ -29,10 +31,11 @@ why-us → instructors → testimonial → enrollment form + contact → footer.
 
 ## TODO / to customize
 
-- [ ] Replace `assets/logo.svg` with the official logo (`assets/logo.png`)
+- [x] Official logo wired in (`logo.png` / `emblem.png`)
+- [x] Real instructor: Marianna Adamyan (photo + bio)
+- [x] Email + Facebook + Instagram links
 - [ ] Real course names, durations, prices
-- [ ] Real instructor names & photos
-- [ ] Correct phone / email / address (currently placeholders)
+- [ ] Confirm phone number (`+374 94 66 06 06` is still a placeholder)
 - [ ] Wire the enrollment form to a real destination (email / Telegram / sheet)
 
 ## Language
