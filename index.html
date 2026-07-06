@@ -108,28 +108,8 @@
         <p>Ծրագրերը նախատեսված են ինչպես սկսնակ, այնպես էլ փորձառու մասնագետների համար։</p>
       </div>
 
-      <div class="cards cards-2col">
-        <article class="card">
-          <div class="card-icon">◓</div>
-          <h3>Առաջին եռամսյակի սքրինինգ հետազոտություն</h3>
-          <span class="card-meta">Ուլտրաձայնային ախտորոշում</span>
-        </article>
-        <article class="card">
-          <div class="card-icon">◉</div>
-          <h3>Պտղի II եռամսյակի ուլտրաձայնային հետազոտություն՝ 20+2 ձևաչափով</h3>
-          <span class="card-meta">Ուլտրաձայնային ախտորոշում</span>
-        </article>
-        <article class="card">
-          <div class="card-icon">◌</div>
-          <h3>Ուլտրաձայնային տվիչի շարժումների գաղտնիքները․ երկրաչափական պատկերներ և գործնական հմտություններ</h3>
-          <span class="card-meta">Գործնական հմտություններ</span>
-        </article>
-        <article class="card">
-          <div class="card-icon">✚</div>
-          <h3>«ՈՒՁՀ ռեպրոդուկտոլոգիայում՝ արգանդի նորմալ հետազոտություն և ախտաբանություն»</h3>
-          <span class="card-meta">Գործնական դասընթաց</span>
-        </article>
-      </div>
+      <div class="cards" id="courseGrid"><!-- rendered by script.js --></div>
+      <p class="courses-hint">Սեղմեք դասընթացի վրա՝ մանրամասները տեսնելու համար</p>
     </div>
   </section>
 
@@ -226,12 +206,7 @@
         </div>
         <div class="field">
           <label for="course">Հետաքրքրող դասընթաց</label>
-          <select id="course" name="course">
-            <option>Առաջին եռամսյակի սքրինինգ հետազոտություն</option>
-            <option>Պտղի II եռամսյակի ուլտրաձայնային հետազոտություն (20+2)</option>
-            <option>Ուլտրաձայնային տվիչի շարժումների գաղտնիքները</option>
-            <option>ՈՒՁՀ ռեպրոդուկտոլոգիայում (գործնական դասընթաց)</option>
-          </select>
+          <select id="course" name="course"><!-- options rendered by script.js --></select>
         </div>
         <button type="submit" class="btn btn-primary full">Ուղարկել հայտը</button>
         <p class="form-note" id="formNote" hidden>Շնորհակալություն։ Մենք շուտով կկապվենք ձեզ հետ։</p>
@@ -266,6 +241,22 @@
       <span>© 2026 MIARMA·MED. Բոլոր իրավունքները պաշտպանված են։</span>
     </div>
   </footer>
+
+  <!-- ===== COURSE MODAL ===== -->
+  <div class="modal" id="courseModal" hidden>
+    <div class="modal-overlay" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close aria-label="Փակել">×</button>
+      <div class="modal-media" id="modalMedia"></div>
+      <div class="modal-body">
+        <div class="modal-badges" id="modalBadges"></div>
+        <h3 id="modalTitle"></h3>
+        <p class="modal-desc" id="modalDesc"></p>
+        <p class="modal-note" id="modalNote" hidden></p>
+        <a href="#contact" class="btn btn-primary" data-close>Գրանցվել դասընթացին</a>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

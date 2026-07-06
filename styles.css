@@ -142,9 +142,48 @@ em{font-style:italic;color:var(--gold-3)}
 .card:hover::before{transform:scaleX(1)}
 .card-icon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
   font-size:1.6rem;color:var(--gold-3);background:var(--blush);margin-bottom:1.2rem}
-.card h3{font-size:1.35rem;margin-bottom:.6rem}
+.card h3{font-size:1.22rem;margin-bottom:.9rem;line-height:1.25}
 .card p{color:var(--muted);font-size:.97rem;margin-bottom:1.1rem}
 .card-meta{font-size:.82rem;color:var(--gold-3);font-weight:600;letter-spacing:.03em}
+
+/* clickable course cards */
+.course-card{display:flex;flex-direction:column;cursor:pointer;outline:none}
+.course-card:focus-visible{box-shadow:0 0 0 3px var(--pink-3),var(--shadow-md)}
+.card-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.1rem}
+.badge{font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  padding:.22rem .6rem;border-radius:100px;line-height:1.4}
+.badge-basic{background:var(--blush);color:var(--gold-3)}
+.badge-intermediate{background:#f3e3c2;color:#9a6b12}
+.badge-advanced{background:#e9d6bd;color:#7a5410}
+.badge-soon{background:#efe1e6;color:#b06a86}
+.card-open{margin-top:auto;font-size:.9rem;font-weight:600;color:var(--gold-3);
+  display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s}
+.course-card:hover .card-open{gap:.6rem}
+.is-soon{opacity:.9}
+.courses-hint{text-align:center;color:var(--muted);font-size:.9rem;margin-top:2rem}
+
+/* course modal */
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px}
+.modal[hidden]{display:none}
+.modal-overlay{position:absolute;inset:0;background:rgba(58,46,42,.55);backdrop-filter:blur(4px);animation:fade .25s ease}
+.modal-card{position:relative;z-index:1;background:#fff;border-radius:24px;max-width:560px;width:100%;
+  max-height:90vh;overflow:auto;box-shadow:0 30px 80px rgba(60,30,20,.35);animation:pop .3s cubic-bezier(.2,.8,.3,1)}
+.modal-close{position:absolute;top:14px;right:14px;z-index:2;width:38px;height:38px;border:0;border-radius:50%;
+  background:rgba(255,255,255,.85);color:var(--ink);font-size:1.5rem;line-height:1;cursor:pointer;transition:.2s}
+.modal-close:hover{background:var(--blush);color:var(--gold-3);transform:rotate(90deg)}
+.modal-media{aspect-ratio:16/9;background:radial-gradient(circle at 50% 35%,var(--blush),var(--pink-2));
+  display:grid;place-items:center;overflow:hidden}
+.modal-media img{width:100%;height:100%;object-fit:cover}
+.modal-media.is-placeholder img{width:auto;height:60%;object-fit:contain;opacity:.9;
+  filter:drop-shadow(0 8px 16px rgba(184,134,11,.25))}
+.modal-body{padding:1.8rem 2rem 2rem}
+.modal-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem}
+.modal-body h3{font-size:1.6rem;margin-bottom:.8rem;line-height:1.25}
+.modal-desc{color:var(--muted);margin-bottom:1rem;line-height:1.7}
+.modal-note{background:var(--pink-1);color:var(--gold-3);font-weight:600;font-size:.92rem;
+  padding:.7rem 1rem;border-radius:12px;margin-bottom:1.3rem}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
 
 /* Why */
 .features{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
