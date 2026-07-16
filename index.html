@@ -25,13 +25,19 @@
       </a>
 
       <nav class="nav" id="nav">
-        <a href="#about">Մեր մասին</a>
-        <a href="#courses">Դասընթացներ</a>
-        <a href="#why">Ինչու՞ մենք</a>
-        <a href="#team">Դասախոս</a>
-        <a href="#contact">Կապ</a>
-        <a href="links">Հղումներ</a>
+        <a href="#about" data-i18n="nav_about">Մեր մասին</a>
+        <a href="#courses" data-i18n="nav_courses">Դասընթացներ</a>
+        <a href="#why" data-i18n="nav_why">Ինչու՞ մենք</a>
+        <a href="#team" data-i18n="nav_team">Դասախոս</a>
+        <a href="#contact" data-i18n="nav_contact">Կապ</a>
+        <a href="/links" data-i18n="nav_links">Հղումներ</a>
       </nav>
+
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Language">
+        <button type="button" data-lang="hy">ՀԱՅ</button>
+        <button type="button" data-lang="ru">РУС</button>
+        <button type="button" data-lang="en">ENG</button>
+      </div>
 
       <button class="burger" id="burger" aria-label="Մենյու">
         <span></span><span></span><span></span>
@@ -44,29 +50,29 @@
     <div class="hero-glow"></div>
     <div class="container hero-inner">
       <div class="hero-copy">
-        <span class="eyebrow">Մասնագիտական ուսումնական կենտրոն</span>
-        <h1>Գիտելիք, որ ծնվում է<br><em>հոգատարությունից</em></h1>
-        <p class="lead">
+        <span class="eyebrow" data-i18n="hero_eyebrow">Մասնագիտական ուսումնական կենտրոն</span>
+        <h1 data-i18n="hero_title">Գիտելիք, որ ծնվում է<br><em>հոգատարությունից</em></h1>
+        <p class="lead" data-i18n="hero_lead">
           MIARMA·MED-ը պատրաստում է բժիշկների և մանկաբարձուհիների՝
           մանկաբարձության և պրենատալ ուլտրաձայնային ախտորոշման ոլորտում՝
           միջազգային չափանիշներով դասընթացների միջոցով։
         </p>
         <div class="hero-actions">
-          <a href="#courses" class="btn btn-primary">Դիտել դասընթացները</a>
-          <a href="#contact" class="btn btn-ghost">Անվճար խորհրդատվություն</a>
+          <a href="#courses" class="btn btn-primary" data-i18n="hero_btn_courses">Դիտել դասընթացները</a>
+          <a href="#contact" class="btn btn-ghost" data-i18n="hero_btn_consult">Անվճար խորհրդատվություն</a>
         </div>
         <div class="hero-trust">
           <span>★★★★★</span>
-          <p>Մասնագիտական ուսուցում՝ մանկաբարձության և ուլտրաձայնային ախտորոշման ոլորտում</p>
+          <p data-i18n="hero_trust">Մասնագիտական ուսուցում՝ մանկաբարձության և ուլտրաձայնային ախտորոշման ոլորտում</p>
         </div>
       </div>
 
       <div class="hero-card">
         <img src="assets/emblem.png" alt="" class="hero-emblem" />
         <ul class="hero-points">
-          <li>Միջազգային հավաստագիր</li>
-          <li>Պրակտիկ պարապմունքներ</li>
-          <li>Փորձառու դասախոս</li>
+          <li data-i18n="point_cert">Միջազգային հավաստագիր</li>
+          <li data-i18n="point_practice">Պրակտիկ պարապմունքներ</li>
+          <li data-i18n="point_instructor">Փորձառու դասախոս</li>
         </ul>
       </div>
     </div>
@@ -81,20 +87,20 @@
         </div>
       </div>
       <div class="about-copy">
-        <span class="section-eyebrow">Մեր մասին</span>
-        <h2>Կենտրոն, որտեղ բժշկությունը հանդիպում է խնամքին</h2>
-        <p>
+        <span class="section-eyebrow" data-i18n="about_eyebrow">Մեր մասին</span>
+        <h2 data-i18n="about_title">Կենտրոն, որտեղ բժշկությունը հանդիպում է խնամքին</h2>
+        <p data-i18n="about_p1">
           MIARMA·MED ուսումնական կենտրոնը ստեղծվել է՝ բարձրացնելու մանկաբարձության
           և ուլտրաձայնային ախտորոշման մասնագետների որակավորումը Հայաստանում։
         </p>
-        <p>
+        <p data-i18n="about_p2">
           Մենք համատեղում ենք տեսական խորը գիտելիքն ու գործնական պարապմունքները՝
           ապահովելով, որ յուրաքանչյուր մասնակից ստանա ոլորտում վստահ աշխատելու հմտություններ։
         </p>
         <ul class="check-list">
-          <li>Միջազգային ուղեցույցների վրա հիմնված ծրագրեր</li>
-          <li>Փոքր խմբեր՝ անհատական մոտեցմամբ</li>
-          <li>Ժամանակակից սարքավորումներով պարապմունքներ</li>
+          <li data-i18n="about_li1">Միջազգային ուղեցույցների վրա հիմնված ծրագրեր</li>
+          <li data-i18n="about_li2">Փոքր խմբեր՝ անհատական մոտեցմամբ</li>
+          <li data-i18n="about_li3">Ժամանակակից սարքավորումներով պարապմունքներ</li>
         </ul>
       </div>
     </div>
@@ -104,13 +110,13 @@
   <section class="section section-alt" id="courses">
     <div class="container">
       <div class="section-head">
-        <span class="section-eyebrow">Դասընթացներ</span>
-        <h2>Ընտրիր քո մասնագիտական ուղին</h2>
-        <p>Ծրագրերը նախատեսված են ինչպես սկսնակ, այնպես էլ փորձառու մասնագետների համար։</p>
+        <span class="section-eyebrow" data-i18n="courses_eyebrow">Դասընթացներ</span>
+        <h2 data-i18n="courses_title">Ընտրիր քո մասնագիտական ուղին</h2>
+        <p data-i18n="courses_lead">Ծրագրերը նախատեսված են ինչպես սկսնակ, այնպես էլ փորձառու մասնագետների համար։</p>
       </div>
 
       <div class="cards" id="courseGrid"><!-- rendered by script.js --></div>
-      <p class="courses-hint">Սեղմեք դասընթացի վրա՝ մանրամասները տեսնելու համար</p>
+      <p class="courses-hint" data-i18n="courses_hint">Սեղմեք դասընթացի վրա՝ մանրամասները տեսնելու համար</p>
     </div>
   </section>
 
@@ -118,29 +124,29 @@
   <section class="section" id="why">
     <div class="container">
       <div class="section-head">
-        <span class="section-eyebrow">Ինչու՞ MIARMA·MED</span>
-        <h2>Հիմքեր, որ ընտրեն հենց մեզ</h2>
+        <span class="section-eyebrow" data-i18n="why_eyebrow">Ինչու՞ MIARMA·MED</span>
+        <h2 data-i18n="why_title">Հիմքեր, որ ընտրեն հենց մեզ</h2>
       </div>
       <div class="features">
         <div class="feature">
           <div class="feature-no">01</div>
-          <h3>Միջազգային հավաստագիր</h3>
-          <p>Ավարտական վկայականը ճանաչվում է և հաստատում է ձեր որակավորումը։</p>
+          <h3 data-i18n="f1_t">Միջազգային հավաստագիր</h3>
+          <p data-i18n="f1_d">Ավարտական վկայականը ճանաչվում է և հաստատում է ձեր որակավորումը։</p>
         </div>
         <div class="feature">
           <div class="feature-no">02</div>
-          <h3>Իրական պրակտիկա</h3>
-          <p>Պարապմունքների մեծ մասը անցկացվում է իրական սարքավորումներով։</p>
+          <h3 data-i18n="f2_t">Իրական պրակտիկա</h3>
+          <p data-i18n="f2_d">Պարապմունքների մեծ մասը անցկացվում է իրական սարքավորումներով։</p>
         </div>
         <div class="feature">
           <div class="feature-no">03</div>
-          <h3>Փորձառու դասախոս</h3>
-          <p>Դասավանդում են գործող բժիշկներ՝ տարիների կլինիկական փորձով։</p>
+          <h3 data-i18n="f3_t">Փորձառու դասախոս</h3>
+          <p data-i18n="f3_d">Դասավանդում են գործող բժիշկներ՝ տարիների կլինիկական փորձով։</p>
         </div>
         <div class="feature">
           <div class="feature-no">04</div>
-          <h3>Աջակցություն ավարտից հետո</h3>
-          <p>Շրջանավարտներին ուղեկցում ենք կարիերայի առաջին քայլերում։</p>
+          <h3 data-i18n="f4_t">Աջակցություն ավարտից հետո</h3>
+          <p data-i18n="f4_d">Շրջանավարտներին ուղեկցում ենք կարիերայի առաջին քայլերում։</p>
         </div>
       </div>
     </div>
@@ -150,17 +156,17 @@
   <section class="section section-alt" id="team">
     <div class="container">
       <div class="section-head">
-        <span class="section-eyebrow">Դասախոս</span>
-        <h2>Մասնագետ, որից արժե սովորել</h2>
+        <span class="section-eyebrow" data-i18n="team_eyebrow">Դասախոս</span>
+        <h2 data-i18n="team_title">Մասնագետ, որից արժե սովորել</h2>
       </div>
       <article class="instructor">
         <div class="instructor-photo">
           <img src="assets/marianna.png" alt="Մարիաննա Ադամյան" />
         </div>
         <div class="instructor-info">
-          <h3>Մարիաննա Ադամյան</h3>
-          <span class="role">բ․գ․թ, Մանկաբարձ-գինեկոլոգ</span>
-          <p>Մանկաբարձ-գինեկոլոգ, ուլտրաձայնային ախտորոշման մասնագետ, 
+          <h3 data-i18n="team_name">Մարիաննա Ադամյան</h3>
+          <span class="role" data-i18n="team_role">բ․գ․թ, Մանկաբարձ-գինեկոլոգ</span>
+          <p data-i18n="team_bio">Մանկաբարձ-գինեկոլոգ, ուլտրաձայնային ախտորոշման մասնագետ,
              ԵՊԲՀ դասախոս, MIARMA-MED ուսումնավարժական կենտրոնի հիմնադիր։</p>
         </div>
       </article>
@@ -170,10 +176,10 @@
   <!-- ===== TESTIMONIAL ===== -->
   <section class="section testimonial-sec">
     <div class="container testimonial">
-      <p class="quote">“MIARMA·MED-ի դասընթացից հետո ես վստահ եմ իմ աշխատանքում։ Պրակտիկ մոտեցումն ու դասախոսների աջակցությունը անգնահատելի էին։”</p>
+      <p class="quote" data-i18n="quote">“MIARMA·MED-ի դասընթացից հետո ես վստահ եմ իմ աշխատանքում։ Պրակտիկ մոտեցումն ու դասախոսների աջակցությունը անգնահատելի էին։”</p>
       <div class="quote-by">
-        <div class="avatar small">Ն.Ա</div>
-        <div><strong>Նարե Ավագյան</strong></div>
+        <div class="avatar small" data-i18n="quote_initials">Ն.Ա</div>
+        <div><strong data-i18n="quote_by">Նարե Ավագյան</strong></div>
       </div>
     </div>
   </section>
@@ -182,13 +188,13 @@
   <section class="section" id="contact">
     <div class="container contact-grid">
       <div class="contact-copy">
-        <span class="section-eyebrow">Կապ</span>
-        <h2>Սկսիր քո ճանապարհը այսօր</h2>
-        <p>Թողիր հայտը, և մենք կկապվենք քեզ հետ՝ դասընթացի մանրամասները ճշտելու համար։</p>
+        <span class="section-eyebrow" data-i18n="contact_eyebrow">Կապ</span>
+        <h2 data-i18n="contact_title">Սկսիր քո ճանապարհը այսօր</h2>
+        <p data-i18n="contact_lead">Թողիր հայտը, և մենք կկապվենք քեզ հետ՝ դասընթացի մանրամասները ճշտելու համար։</p>
         <ul class="contact-list">
           <li><span>✆</span> +374 94 66 06 06</li>
           <li><span>✉</span> <a href="mailto:miarmamed.arm@gmail.com">miarmamed.arm@gmail.com</a></li>
-          <li><span>⌖</span> Երևան, Հայաստան</li>
+          <li><span>⌖</span> <span data-i18n="contact_addr">Երևան, Հայաստան</span></li>
         </ul>
         <div class="socials">
           <a href="https://www.facebook.com/MIARMA.MedTrainingCenter" target="_blank" rel="noopener" aria-label="Facebook">f</a>
@@ -198,19 +204,19 @@
 
       <form class="contact-form" id="enrollForm" novalidate>
         <div class="field">
-          <label for="name">Անուն Ազգանուն</label>
-          <input id="name" name="name" type="text" required placeholder="Ձեր անունը" />
+          <label for="name" data-i18n="form_name">Անուն Ազգանուն</label>
+          <input id="name" name="name" type="text" required placeholder="Ձեր անունը" data-i18n-ph="form_name_ph" />
         </div>
         <div class="field">
-          <label for="phone">Հեռախոս</label>
+          <label for="phone" data-i18n="form_phone">Հեռախոս</label>
           <input id="phone" name="phone" type="tel" required placeholder="+374 ..." />
         </div>
         <div class="field">
-          <label for="course">Հետաքրքրող դասընթաց</label>
+          <label for="course" data-i18n="form_course">Հետաքրքրող դասընթաց</label>
           <select id="course" name="course"><!-- options rendered by script.js --></select>
         </div>
-        <button type="submit" class="btn btn-primary full">Ուղարկել հայտը</button>
-        <p class="form-note" id="formNote" hidden>Շնորհակալություն։ Մենք շուտով կկապվենք ձեզ հետ։</p>
+        <button type="submit" class="btn btn-primary full" data-i18n="form_submit">Ուղարկել հայտը</button>
+        <p class="form-note" id="formNote" hidden data-i18n="form_note">Շնորհակալություն։ Մենք շուտով կկապվենք ձեզ հետ։</p>
       </form>
     </div>
   </section>
@@ -220,26 +226,26 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <img src="assets/emblem.png" alt="MIARMA·MED" />
-        <p>MIARMA·MED Training Center — մասնագիտական ուսուցում մանկաբարձության և ուլտրաձայնային ախտորոշման ոլորտում։</p>
+        <p data-i18n="footer_about">MIARMA·MED Training Center — մասնագիտական ուսուցում մանկաբարձության և ուլտրաձայնային ախտորոշման ոլորտում։</p>
       </div>
       <div class="footer-col">
-        <h4>Բաժիններ</h4>
-        <a href="#about">Մեր մասին</a>
-        <a href="#courses">Դասընթացներ</a>
-        <a href="#team">Դասախոս</a>
-        <a href="#contact">Կապ</a>
+        <h4 data-i18n="footer_sections">Բաժիններ</h4>
+        <a href="#about" data-i18n="nav_about">Մեր մասին</a>
+        <a href="#courses" data-i18n="nav_courses">Դասընթացներ</a>
+        <a href="#team" data-i18n="nav_team">Դասախոս</a>
+        <a href="#contact" data-i18n="nav_contact">Կապ</a>
       </div>
       <div class="footer-col">
-        <h4>Կապ</h4>
+        <h4 data-i18n="footer_contact">Կապ</h4>
         <a href="tel:+37494660606">+374 94 66 06 06</a>
         <a href="mailto:miarmamed.arm@gmail.com">miarmamed.arm@gmail.com</a>
         <a href="https://www.facebook.com/MIARMA.MedTrainingCenter" target="_blank" rel="noopener">Facebook</a>
         <a href="https://www.instagram.com/miarma.med_trainingcenter" target="_blank" rel="noopener">Instagram</a>
-        <span>Երևան, Հայաստան</span>
+        <span data-i18n="contact_addr">Երևան, Հայաստան</span>
       </div>
     </div>
     <div class="container footer-bottom">
-      <span>© 2026 MIARMA·MED. Բոլոր իրավունքները պաշտպանված են։</span>
+      <span data-i18n="footer_rights">© 2026 MIARMA·MED. Բոլոր իրավունքները պաշտպանված են։</span>
     </div>
   </footer>
 
@@ -254,7 +260,7 @@
         <h3 id="modalTitle"></h3>
         <p class="modal-desc" id="modalDesc"></p>
         <p class="modal-note" id="modalNote" hidden></p>
-        <a href="#contact" class="btn btn-primary" data-close>Գրանցվել դասընթացին</a>
+        <a href="#contact" class="btn btn-primary" data-close data-i18n="modal_enroll">Գրանցվել դասընթացին</a>
       </div>
     </div>
   </div>
