@@ -273,3 +273,16 @@ em{font-style:italic;color:var(--gold-3)}
   .eyebrow{font-size:.7rem;letter-spacing:.14em}
   .section-eyebrow{font-size:.74rem;letter-spacing:.16em}
 }
+
+/* ===== Language switcher ===== */
+.lang-switch{display:flex;align-items:center;gap:2px;
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang-switch button{border:0;background:none;cursor:pointer;
+  font-family:inherit;font-size:.78rem;font-weight:600;letter-spacing:.04em;
+  color:var(--muted);padding:.35rem .7rem;border-radius:999px;transition:.2s}
+.lang-switch button:hover{color:var(--gold-3)}
+.lang-switch button.active{background:var(--gold-grad);color:#fff}
+@media (max-width:900px){
+  .lang-switch{margin-right:.2rem}
+  .lang-switch button{padding:.3rem .55rem;font-size:.72rem}
+}
