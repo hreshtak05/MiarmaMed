@@ -260,8 +260,58 @@
         <h3 id="modalTitle"></h3>
         <p class="modal-desc" id="modalDesc"></p>
         <p class="modal-note" id="modalNote" hidden></p>
-        <a href="#contact" class="btn btn-primary" data-close data-i18n="modal_enroll">Գրանցվել դասընթացին</a>
+        <button type="button" class="btn btn-primary" id="modalEnroll" data-i18n="modal_enroll">Գրանցվել դասընթացին</button>
       </div>
+    </div>
+  </div>
+
+  <!-- ===== REGISTRATION MODAL ===== -->
+  <div class="reg-modal" id="regModal" hidden>
+    <div class="modal-overlay" data-reg-close></div>
+    <div class="reg-card" role="dialog" aria-modal="true" aria-labelledby="regTitle">
+      <button class="modal-close" data-reg-close aria-label="Փակել">×</button>
+      <div class="reg-head">
+        <span class="section-eyebrow" data-i18n="reg_eyebrow">Գրանցում</span>
+        <h3 id="regTitle" data-i18n="reg_title">Գրանցվել դասընթացին</h3>
+        <span class="reg-course" id="regCourseName"></span>
+      </div>
+      <form class="reg-form" id="regForm" novalidate>
+        <input type="hidden" name="course" id="regCourse" />
+        <div class="field">
+          <label data-i18n="reg_name">Անուն, ազգանուն *</label>
+          <input name="full_name" type="text" required />
+        </div>
+        <div class="field">
+          <label data-i18n="reg_phone">Հեռախոսահամար *</label>
+          <input name="phone" type="tel" required placeholder="+374 ..." />
+        </div>
+        <div class="field">
+          <label data-i18n="reg_email">Էլ. հասցե *</label>
+          <input name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label data-i18n="reg_profession">Մասնագիտություն *</label>
+          <input name="profession" type="text" required />
+        </div>
+        <div class="field">
+          <label data-i18n="reg_working">Աշխատո՞ւմ եք *</label>
+          <select name="is_working" id="regWorking" required>
+            <option value="" data-i18n="reg_choose">Ընտրել...</option>
+            <option value="yes" data-i18n="reg_yes">Այո</option>
+            <option value="no" data-i18n="reg_no">Ոչ</option>
+          </select>
+        </div>
+        <div class="field" id="regWorkplaceField" hidden>
+          <label data-i18n="reg_workplace">Ո՞ր բժշկական հաստատությունում</label>
+          <input name="workplace" type="text" />
+        </div>
+        <div class="field">
+          <label data-i18n="reg_experience">Ուլտրաձայնային ախտորոշման փորձ (եթե այո՝ նշեք ժամկետը)</label>
+          <input name="ultrasound_experience" type="text" />
+        </div>
+        <button type="submit" class="btn btn-primary full" data-i18n="reg_submit">Ուղարկել հայտը</button>
+        <p class="reg-note" id="regNote" hidden data-i18n="reg_success">Շնորհակալություն։ Ձեր հայտը ստացվեց, մենք շուտով կկապվենք ձեզ հետ։</p>
+      </form>
     </div>
   </div>
 

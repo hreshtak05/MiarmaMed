@@ -46,7 +46,16 @@ const I18N = {
     footer_about: 'MIARMA·MED Training Center — մասնագիտական ուսուցում մանկաբարձության և ուլտրաձայնային ախտորոշման ոլորտում։',
     footer_sections: 'Բաժիններ', footer_contact: 'Կապ',
     footer_rights: '© 2026 MIARMA·MED. Բոլոր իրավունքները պաշտպանված են։',
-    modal_enroll: 'Գրանցվել դասընթացին', badge_soon: 'Շուտով'
+    modal_enroll: 'Գրանցվել դասընթացին', badge_soon: 'Շուտով',
+    reg_eyebrow: 'Գրանցում', reg_title: 'Գրանցվել դասընթացին',
+    reg_name: 'Անուն, ազգանուն *', reg_phone: 'Հեռախոսահամար *', reg_email: 'Էլ. հասցե *',
+    reg_profession: 'Մասնագիտություն *', reg_working: 'Աշխատո՞ւմ եք *',
+    reg_choose: 'Ընտրել...', reg_yes: 'Այո', reg_no: 'Ոչ',
+    reg_workplace: 'Ո՞ր բժշկական հաստատությունում', reg_workplace_ph: 'Հաստատության անվանումը',
+    reg_experience: 'Ուլտրաձայնային ախտորոշման փորձ (եթե այո՝ նշեք ժամկետը)',
+    reg_submit: 'Ուղարկել հայտը', reg_sending: 'Ուղարկվում է...',
+    reg_success: 'Շնորհակալություն։ Ձեր հայտը ստացվեց, մենք շուտով կկապվենք ձեզ հետ։',
+    reg_error: 'Ներողություն, սխալ առաջացավ։ Խնդրում ենք կրկին փորձել կամ զանգահարել մեզ։'
   },
   ru: {
     title: 'MIARMA·MED — Учебный центр',
@@ -90,7 +99,16 @@ const I18N = {
     footer_about: 'MIARMA·MED Training Center — профессиональное обучение в области акушерства и ультразвуковой диагностики.',
     footer_sections: 'Разделы', footer_contact: 'Контакты',
     footer_rights: '© 2026 MIARMA·MED. Все права защищены.',
-    modal_enroll: 'Записаться на курс', badge_soon: 'Скоро'
+    modal_enroll: 'Записаться на курс', badge_soon: 'Скоро',
+    reg_eyebrow: 'Регистрация', reg_title: 'Регистрация на курс',
+    reg_name: 'Имя, фамилия *', reg_phone: 'Номер телефона *', reg_email: 'Эл. почта *',
+    reg_profession: 'Специальность *', reg_working: 'Вы работаете? *',
+    reg_choose: 'Выбрать...', reg_yes: 'Да', reg_no: 'Нет',
+    reg_workplace: 'В каком медицинском учреждении', reg_workplace_ph: 'Название учреждения',
+    reg_experience: 'Опыт в ультразвуковой диагностике (если да, укажите срок)',
+    reg_submit: 'Отправить заявку', reg_sending: 'Отправляется...',
+    reg_success: 'Спасибо! Ваша заявка получена, мы скоро свяжемся с вами.',
+    reg_error: 'Извините, произошла ошибка. Попробуйте снова или позвоните нам.'
   },
   en: {
     title: 'MIARMA·MED — Training Center',
@@ -134,7 +152,16 @@ const I18N = {
     footer_about: 'MIARMA·MED Training Center — professional training in obstetrics and ultrasound diagnostics.',
     footer_sections: 'Sections', footer_contact: 'Contact',
     footer_rights: '© 2026 MIARMA·MED. All rights reserved.',
-    modal_enroll: 'Enroll in the course', badge_soon: 'Coming soon'
+    modal_enroll: 'Enroll in the course', badge_soon: 'Coming soon',
+    reg_eyebrow: 'Registration', reg_title: 'Course registration',
+    reg_name: 'Full name *', reg_phone: 'Phone number *', reg_email: 'Email *',
+    reg_profession: 'Profession *', reg_working: 'Are you working? *',
+    reg_choose: 'Select...', reg_yes: 'Yes', reg_no: 'No',
+    reg_workplace: 'At which medical institution', reg_workplace_ph: 'Institution name',
+    reg_experience: 'Ultrasound diagnostics experience (if yes, specify duration)',
+    reg_submit: 'Send request', reg_sending: 'Sending...',
+    reg_success: 'Thank you! Your request has been received, we will contact you soon.',
+    reg_error: 'Sorry, something went wrong. Please try again or call us.'
   }
 };
 
@@ -396,10 +423,12 @@ const mBadges = document.getElementById('modalBadges');
 const mMedia = document.getElementById('modalMedia');
 const mNote = document.getElementById('modalNote');
 let lastFocused = null;
+let currentCourseIdx = null;
 
 function openCourse(i) {
   const c = COURSES[i];
   if (!c) return;
+  currentCourseIdx = i;
   lastFocused = document.activeElement;
   mTitle.textContent = ct(c.t);
   mDesc.textContent = ct(c.desc);
@@ -438,6 +467,110 @@ grid?.addEventListener('keydown', (e) => {
 });
 modal?.addEventListener('click', (e) => { if (e.target.closest('[data-close]')) closeCourse(); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal && !modal.hidden) closeCourse(); });
+
+// ===== Registration modal =====
+// CONFIG: paste your Google Apps Script Web App URL between the quotes below.
+// Empty = "demo mode" (nothing is saved).
+const REG_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzwRBnptNhKmNXnl2oPM-33H1snGo1NZE-tGT_MLbfdCTdOPPhKouIx7iaUD0v3lEvL/exec";
+
+const regModal = document.getElementById('regModal');
+const regForm = document.getElementById('regForm');
+const regCourseInput = document.getElementById('regCourse');
+const regCourseName = document.getElementById('regCourseName');
+const regNote = document.getElementById('regNote');
+const regWorking = document.getElementById('regWorking');
+const regWorkplaceField = document.getElementById('regWorkplaceField');
+
+function openReg(idx) {
+  const c = COURSES[idx];
+  if (regForm) regForm.reset();
+  if (regNote) regNote.hidden = true;
+  if (regWorkplaceField) regWorkplaceField.hidden = true;
+  // Show current-language course name to the visitor, but save the canonical
+  // Armenian title so the CRM groups all registrations of a course together.
+  regCourseInput.value = c ? c.t.hy : '';
+  regCourseName.textContent = c ? ct(c.t) : '';
+  // restore any hidden fields / button from a previous success
+  regForm.querySelectorAll('.field').forEach(f => { f.style.display = ''; });
+  if (regWorkplaceField) regWorkplaceField.style.display = '';
+  regWorkplaceField.hidden = true;
+  const submitBtn = regForm.querySelector('button[type="submit"]');
+  if (submitBtn) { submitBtn.style.display = ''; submitBtn.disabled = false; submitBtn.textContent = T('reg_submit'); }
+  regModal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  regForm.querySelector('input[name="full_name"]').focus();
+}
+
+function closeReg() {
+  regModal.hidden = true;
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalEnroll')?.addEventListener('click', () => {
+  const idx = currentCourseIdx;
+  closeCourse();
+  openReg(idx);
+});
+
+regModal?.addEventListener('click', (e) => { if (e.target.closest('[data-reg-close]')) closeReg(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && regModal && !regModal.hidden) closeReg(); });
+
+// Show the workplace question only when "working = yes"
+regWorking?.addEventListener('change', () => {
+  regWorkplaceField.hidden = regWorking.value !== 'yes';
+});
+
+async function submitRegistration(payload) {
+  if (REG_SCRIPT_URL) {
+    try {
+      await fetch(REG_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      return true; // opaque response with no-cors — the script still runs
+    } catch (e) { return false; }
+  }
+  // demo mode — not connected yet
+  console.log('DEMO registration (not saved anywhere):', payload);
+  return true;
+}
+
+regForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!regForm.checkValidity()) { regForm.reportValidity(); return; }
+
+  const el = regForm.elements;
+  const working = el.is_working.value === 'yes';
+  const payload = {
+    full_name: el.full_name.value.trim(),
+    phone: el.phone.value.trim(),
+    email: el.email.value.trim(),
+    profession: el.profession.value.trim(),
+    is_working: working,
+    workplace: working ? el.workplace.value.trim() : '',
+    ultrasound_experience: el.ultrasound_experience.value.trim(),
+    course: el.course.value
+  };
+
+  const submitBtn = regForm.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = T('reg_sending');
+
+  const ok = await submitRegistration(payload);
+
+  if (ok) {
+    regForm.querySelectorAll('.field').forEach(f => { f.style.display = 'none'; });
+    submitBtn.style.display = 'none';
+    regNote.hidden = false;
+    setTimeout(closeReg, 3000);
+  } else {
+    submitBtn.disabled = false;
+    submitBtn.textContent = T('reg_submit');
+    alert(T('reg_error'));
+  }
+});
 
 // ===== Mobile nav =====
 const burger = document.getElementById('burger');
