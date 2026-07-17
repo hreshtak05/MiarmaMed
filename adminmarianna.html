@@ -77,12 +77,14 @@
   .person-head:hover{background:#fff8fb}
   .person-head .idcol{display:flex;flex-direction:column;min-width:0}
   .person-head .pname{font-weight:600;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .person-head .pmeta{color:var(--muted);font-size:.78rem}
+  .person-head .pmeta{color:var(--muted);font-size:.78rem;display:flex;align-items:center}
   .person-head .pphone{color:var(--ink);font-size:.9rem;white-space:nowrap}
   .person-head .spacer{margin-left:auto}
   .status-pill{border-radius:999px;padding:.3rem .7rem;font-size:.75rem;font-weight:600;color:#fff;white-space:nowrap}
   .status-pill.new{background:var(--new)}.status-pill.called{background:var(--called)}
   .status-pill.enrolled{background:var(--enrolled)}.status-pill.declined{background:var(--declined)}
+  .count-badge{display:inline-block;background:#f2e6d3;color:#8a6d2f;border-radius:999px;
+    padding:.05rem .5rem;font-size:.72rem;font-weight:600;margin-left:.45rem}
   .chev{transition:transform .2s;color:var(--muted);font-size:.85rem}
   .person.open .chev{transform:rotate(90deg)}
   .person-body{padding:.2rem 1.1rem 1.1rem;border-top:1px solid var(--line)}
@@ -93,8 +95,9 @@
   .detail .v a{color:var(--gold-3);text-decoration:none}
   .yes{color:var(--enrolled);font-weight:600}.no{color:var(--muted)}
   .courses-label{color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:.3rem}
-  .courses-box{background:var(--pink);border-radius:10px;padding:.7rem .9rem;margin:.3rem 0 .9rem;
-    font-size:.88rem;line-height:1.55;color:#6b4a52;white-space:pre-wrap;word-break:break-word}
+  .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:.4rem 0 .95rem}
+  .chip{background:var(--blush);color:#8a5a2a;border:1px solid #f0d9e0;border-radius:999px;
+    padding:.34rem .8rem;font-size:.82rem;line-height:1.35;font-weight:500}
   .edit-row{display:flex;gap:1.2rem;flex-wrap:wrap;align-items:flex-end}
   .edit-row .fld{display:flex;flex-direction:column;gap:.25rem}
   .edit-row .fld.grow{flex:1;min-width:200px}
@@ -175,7 +178,7 @@ const STATUS_CLASS = {'Նոր':'new','Զանգահարված':'called','Գրան
 
 let DATA = [];
 let PWD = "";
-const expanded = new Set();   // which rows are open
+const expanded = new Set();
 
 // ---- JSONP read ----
 function fetchData(pwd){
@@ -222,8 +225,11 @@ function afterLoad(){
   document.getElementById('loading').hidden = true;
   const sel = document.getElementById('fCourse');
   sel.length = 1;
-  [...new Set(DATA.map(r=>r.course).filter(Boolean))].sort().forEach(c=>{
-    const o=document.createElement('option'); o.value=c; o.textContent=(c.length>60?c.slice(0,60)+'…':c); sel.appendChild(o);
+  // build course filter from the individual (split) courses across everyone
+  const all = new Set();
+  DATA.forEach(r=>splitCourses(r.course).forEach(c=>all.add(c)));
+  [...all].sort().forEach(c=>{
+    const o=document.createElement('option'); o.value=c; o.textContent=(c.length>70?c.slice(0,70)+'…':c); sel.appendChild(o);
   });
   render();
 }
@@ -235,6 +241,16 @@ function fmtDate(s){
 const esc = s => (s==null?'':s.toString()).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const isYes = v => v===true || v==='Այո' || v==='true';
 const norm = r => STATUSES.includes(r.status) ? r.status : 'Նոր';
+
+// split a combined multi-course string into individual courses
+function splitCourses(text){
+  if(!text) return [];
+  return text.toString()
+    .replace(/\)\s*,\s*/g, ')')     // break after "), " but keep the ")"
+    .split(/[\n;]+/)
+    .map(s=>s.trim().replace(/^[,\s]+|[,\s]+$/g,''))
+    .filter(Boolean);
+}
 
 function updateStats(){
   document.getElementById('s-total').textContent = DATA.length;
@@ -249,7 +265,7 @@ function render(){
   const fs=document.getElementById('fStatus').value;
 
   const rows = DATA.filter(r=>{
-    if(fc && r.course!==fc) return false;
+    if(fc && !splitCourses(r.course).includes(fc)) return false;
     if(fs && norm(r)!==fs) return false;
     if(q && !((r.full_name||'').toLowerCase().includes(q) || (r.phone||'').toString().toLowerCase().includes(q))) return false;
     return true;
@@ -263,6 +279,7 @@ function render(){
   rows.forEach((r)=>{
     const st = norm(r); const cls = STATUS_CLASS[st];
     const open = expanded.has(r.row);
+    const courses = splitCourses(r.course);
     const card=document.createElement('div');
     card.className='person'+(open?' open':'');
     card.dataset.row=r.row;
@@ -271,7 +288,7 @@ function render(){
         <input type="checkbox" class="rowchk" value="${r.row}" onclick="event.stopPropagation()" />
         <div class="idcol">
           <span class="pname">${esc(r.full_name)||'—'}</span>
-          <span class="pmeta">${fmtDate(r.created_at)}</span>
+          <span class="pmeta">${fmtDate(r.created_at)}${courses.length?`<span class="count-badge">${courses.length} դասընթաց</span>`:''}</span>
         </div>
         <span class="spacer"></span>
         <span class="pphone">${esc(r.phone)}</span>
@@ -287,8 +304,8 @@ function render(){
           <div><div class="k">Հաստատություն</div><div class="v">${esc(r.workplace)||'—'}</div></div>
           <div><div class="k">ՈՒՁ փորձ</div><div class="v">${esc(r.ultrasound_experience)||'—'}</div></div>
         </div>
-        <div class="courses-label">Ընտրված դասընթաց(ներ)</div>
-        <div class="courses-box">${esc(r.course)||'—'}</div>
+        <div class="courses-label">Ընտրված դասընթաց(ներ)${courses.length?` · ${courses.length}`:''}</div>
+        <div class="chips">${courses.length?courses.map(c=>`<span class="chip">${esc(c)}</span>`).join(''):'<span class="no">—</span>'}</div>
         <div class="edit-row">
           <div class="fld"><label>Կարգավիճակ</label>
             <select class="status ${cls}" onchange="setStatus(${r.row}, this.value, this)">
