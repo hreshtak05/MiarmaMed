@@ -53,7 +53,7 @@
   .btn.danger{color:var(--declined);border-color:#e7c4c0}
   .btn.danger:hover{background:#fbeceb;border-color:var(--declined);color:var(--declined)}
 
-  .wrap{padding:1.6rem;max-width:1400px;margin:0 auto}
+  .wrap{padding:1.6rem;max-width:1100px;margin:0 auto}
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.4rem}
   .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.2rem;
     box-shadow:0 6px 18px rgba(170,120,90,.06)}
@@ -63,31 +63,50 @@
   .stat.new .n{color:var(--new)} .stat.called .n{color:var(--called)} .stat.enrolled .n{color:var(--enrolled)}
 
   .toolbar{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1rem;align-items:center}
-  .toolbar input,.toolbar select{font-family:inherit;font-size:.88rem;padding:.55rem .8rem;
+  .toolbar input.search,.toolbar select{font-family:inherit;font-size:.88rem;padding:.55rem .8rem;
     border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
   .toolbar input.search{flex:1;min-width:220px}
+  .selall{display:flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--muted);cursor:pointer}
   .count-note{color:var(--muted);font-size:.85rem;margin-left:auto}
 
-  .table-wrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:16px;
-    box-shadow:0 6px 18px rgba(170,120,90,.06)}
-  table{border-collapse:collapse;width:100%;min-width:1100px;font-size:.87rem}
-  th,td{text-align:left;padding:.75rem .9rem;border-bottom:1px solid var(--line);vertical-align:top}
-  th{background:var(--pink);color:#7a5a62;font-weight:600;font-size:.78rem;position:sticky;top:0;white-space:nowrap}
-  tbody tr:hover{background:#fff8fb}
-  td.name{font-weight:600;white-space:nowrap}
-  a.tel{color:var(--ink);text-decoration:none}a.tel:hover{color:var(--gold-3)}
-  .course-tag{display:inline-block;background:var(--blush);color:#8a5a2a;border-radius:8px;
-    padding:.15rem .5rem;font-size:.78rem;font-weight:600}
+  /* ===== accordion list ===== */
+  .list{display:flex;flex-direction:column;gap:.55rem}
+  .person{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    box-shadow:0 4px 14px rgba(170,120,90,.05)}
+  .person-head{display:flex;align-items:center;gap:.9rem;padding:.8rem 1.05rem;cursor:pointer}
+  .person-head:hover{background:#fff8fb}
+  .person-head .idcol{display:flex;flex-direction:column;min-width:0}
+  .person-head .pname{font-weight:600;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .person-head .pmeta{color:var(--muted);font-size:.78rem}
+  .person-head .pphone{color:var(--ink);font-size:.9rem;white-space:nowrap}
+  .person-head .spacer{margin-left:auto}
+  .status-pill{border-radius:999px;padding:.3rem .7rem;font-size:.75rem;font-weight:600;color:#fff;white-space:nowrap}
+  .status-pill.new{background:var(--new)}.status-pill.called{background:var(--called)}
+  .status-pill.enrolled{background:var(--enrolled)}.status-pill.declined{background:var(--declined)}
+  .chev{transition:transform .2s;color:var(--muted);font-size:.85rem}
+  .person.open .chev{transform:rotate(90deg)}
+  .person-body{padding:.2rem 1.1rem 1.1rem;border-top:1px solid var(--line)}
+  .person-body[hidden]{display:none}
+  .detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.7rem 1.4rem;margin:.9rem 0 .7rem}
+  .detail .k{color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em}
+  .detail .v{font-size:.92rem;margin-top:.12rem}
+  .detail .v a{color:var(--gold-3);text-decoration:none}
   .yes{color:var(--enrolled);font-weight:600}.no{color:var(--muted)}
-  .status{border:0;border-radius:999px;padding:.35rem .7rem;font-family:inherit;font-weight:600;
-    font-size:.78rem;cursor:pointer;color:#fff}
+  .courses-label{color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:.3rem}
+  .courses-box{background:var(--pink);border-radius:10px;padding:.7rem .9rem;margin:.3rem 0 .9rem;
+    font-size:.88rem;line-height:1.55;color:#6b4a52;white-space:pre-wrap;word-break:break-word}
+  .edit-row{display:flex;gap:1.2rem;flex-wrap:wrap;align-items:flex-end}
+  .edit-row .fld{display:flex;flex-direction:column;gap:.25rem}
+  .edit-row .fld.grow{flex:1;min-width:200px}
+  .edit-row label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .status{border:0;border-radius:999px;padding:.4rem .8rem;font-family:inherit;font-weight:600;
+    font-size:.8rem;cursor:pointer;color:#fff}
   .status.new{background:var(--new)}.status.called{background:var(--called)}
   .status.enrolled{background:var(--enrolled)}.status.declined{background:var(--declined)}
-  td.notes input{width:150px;border:1px solid var(--line);border-radius:8px;padding:.4rem .5rem;
-    font-family:inherit;font-size:.82rem}
-  .empty{padding:3rem;text-align:center;color:var(--muted)}
-  .loading{padding:3rem;text-align:center;color:var(--muted)}
-  @media (max-width:700px){ .stats{grid-template-columns:1fr 1fr} .wrap{padding:1rem} }
+  .noteinp{border:1px solid var(--line);border-radius:8px;padding:.5rem .6rem;font-family:inherit;font-size:.86rem;width:100%}
+  .empty,.loading{padding:3rem;text-align:center;color:var(--muted)}
+  @media (max-width:700px){ .stats{grid-template-columns:1fr 1fr} .wrap{padding:1rem}
+    .person-head .pphone{display:none} }
 </style>
 </head>
 <body>
@@ -136,22 +155,14 @@
           <option value="Գրանցված">Գրանցված</option>
           <option value="Մերժված">Մերժված</option>
         </select>
+        <label class="selall"><input type="checkbox" id="selAll" onclick="toggleAll(this)" /> Ընտրել բոլորը</label>
         <button class="btn danger" onclick="deleteSelected()">🗑 Ջնջել ընտրվածները</button>
         <span class="count-note" id="countNote"></span>
       </div>
 
-      <div class="table-wrap">
-        <table>
-          <thead><tr>
-            <th style="width:34px;text-align:center"><input type="checkbox" id="selAll" onclick="toggleAll(this)" aria-label="Ընտրել բոլորը" /></th><th>Ամսաթիվ</th><th>Անուն, ազգանուն</th><th>Հեռախոս</th><th>Էլ. հասցե</th>
-            <th>Մասնագիտություն</th><th>Աշխատում է</th><th>Հաստատություն</th><th>ՈՒՁ փորձ</th>
-            <th>Դասընթաց</th><th>Կարգավիճակ</th><th>Նշումներ</th>
-          </tr></thead>
-          <tbody id="rows"></tbody>
-        </table>
-        <div class="loading" id="loading">Բեռնվում է...</div>
-        <div class="empty" id="empty" hidden>Գրանցումներ դեռ չկան։</div>
-      </div>
+      <div class="list" id="list"></div>
+      <div class="loading" id="loading">Բեռնվում է...</div>
+      <div class="empty" id="empty" hidden>Գրանցումներ դեռ չկան։</div>
     </div>
   </div>
 
@@ -164,6 +175,7 @@ const STATUS_CLASS = {'Նոր':'new','Զանգահարված':'called','Գրան
 
 let DATA = [];
 let PWD = "";
+const expanded = new Set();   // which rows are open
 
 // ---- JSONP read ----
 function fetchData(pwd){
@@ -193,12 +205,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e)=>{
       document.getElementById('app').hidden = false;
       DATA = res.rows || [];
       afterLoad();
-    } else {
-      err.textContent = 'Սխալ գաղտնաբառ։';
-    }
-  }catch(ex){
-    err.textContent = 'Կապի սխալ։ Փորձեք կրկին։';
-  }
+    } else { err.textContent = 'Սխալ գաղտնաբառ։'; }
+  }catch(ex){ err.textContent = 'Կապի սխալ։ Փորձեք կրկին։'; }
 });
 
 async function reload(){
@@ -215,7 +223,7 @@ function afterLoad(){
   const sel = document.getElementById('fCourse');
   sel.length = 1;
   [...new Set(DATA.map(r=>r.course).filter(Boolean))].sort().forEach(c=>{
-    const o=document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o);
+    const o=document.createElement('option'); o.value=c; o.textContent=(c.length>60?c.slice(0,60)+'…':c); sel.appendChild(o);
   });
   render();
 }
@@ -226,13 +234,19 @@ function fmtDate(s){
 }
 const esc = s => (s==null?'':s.toString()).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const isYes = v => v===true || v==='Այո' || v==='true';
+const norm = r => STATUSES.includes(r.status) ? r.status : 'Նոր';
+
+function updateStats(){
+  document.getElementById('s-total').textContent = DATA.length;
+  document.getElementById('s-new').textContent = DATA.filter(r=>norm(r)==='Նոր').length;
+  document.getElementById('s-called').textContent = DATA.filter(r=>norm(r)==='Զանգահարված').length;
+  document.getElementById('s-enrolled').textContent = DATA.filter(r=>norm(r)==='Գրանցված').length;
+}
 
 function render(){
   const q=document.getElementById('search').value.trim().toLowerCase();
   const fc=document.getElementById('fCourse').value;
   const fs=document.getElementById('fStatus').value;
-
-  const norm = r => STATUSES.includes(r.status) ? r.status : 'Նոր';
 
   const rows = DATA.filter(r=>{
     if(fc && r.course!==fc) return false;
@@ -241,37 +255,63 @@ function render(){
     return true;
   });
 
-  document.getElementById('s-total').textContent = DATA.length;
-  document.getElementById('s-new').textContent = DATA.filter(r=>norm(r)==='Նոր').length;
-  document.getElementById('s-called').textContent = DATA.filter(r=>norm(r)==='Զանգահարված').length;
-  document.getElementById('s-enrolled').textContent = DATA.filter(r=>norm(r)==='Գրանցված').length;
-
-  const tb=document.getElementById('rows'); tb.innerHTML='';
+  updateStats();
+  const list=document.getElementById('list'); list.innerHTML='';
   document.getElementById('empty').hidden = rows.length>0;
   document.getElementById('countNote').textContent = `Ցուցադրված՝ ${rows.length} / ${DATA.length}`;
 
   rows.forEach((r)=>{
-    const st = norm(r);
-    const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td style="text-align:center"><input type="checkbox" class="rowchk" value="${r.row}" /></td>
-      <td class="sub" style="white-space:nowrap;color:var(--muted)">${fmtDate(r.created_at)}</td>
-      <td class="name">${esc(r.full_name)}</td>
-      <td><a class="tel" href="tel:${esc(r.phone)}">${esc(r.phone)}</a></td>
-      <td>${r.email?`<a class="tel" href="mailto:${esc(r.email)}">${esc(r.email)}</a>`:'<span class="no">—</span>'}</td>
-      <td>${esc(r.profession)}</td>
-      <td>${isYes(r.is_working)?'<span class="yes">Այո</span>':'<span class="no">Ոչ</span>'}</td>
-      <td>${esc(r.workplace)||'<span class="no">—</span>'}</td>
-      <td>${esc(r.ultrasound_experience)||'<span class="no">—</span>'}</td>
-      <td><span class="course-tag">${esc(r.course)}</span></td>
-      <td>
-        <select class="status ${STATUS_CLASS[st]}" onchange="setStatus(${r.row}, this.value, this)">
-          ${STATUSES.map(k=>`<option value="${k}" ${k===st?'selected':''}>${k}</option>`).join('')}
-        </select>
-      </td>
-      <td class="notes"><input value="${esc(r.notes)}" placeholder="..." onchange="setNote(${r.row}, this.value)" /></td>`;
-    tb.appendChild(tr);
+    const st = norm(r); const cls = STATUS_CLASS[st];
+    const open = expanded.has(r.row);
+    const card=document.createElement('div');
+    card.className='person'+(open?' open':'');
+    card.dataset.row=r.row;
+    card.innerHTML=`
+      <div class="person-head" onclick="toggle(${r.row}, event)">
+        <input type="checkbox" class="rowchk" value="${r.row}" onclick="event.stopPropagation()" />
+        <div class="idcol">
+          <span class="pname">${esc(r.full_name)||'—'}</span>
+          <span class="pmeta">${fmtDate(r.created_at)}</span>
+        </div>
+        <span class="spacer"></span>
+        <span class="pphone">${esc(r.phone)}</span>
+        <span class="status-pill ${cls}">${st}</span>
+        <span class="chev">▶</span>
+      </div>
+      <div class="person-body" ${open?'':'hidden'}>
+        <div class="detail">
+          <div><div class="k">Էլ. հասցե</div><div class="v">${r.email?`<a href="mailto:${esc(r.email)}">${esc(r.email)}</a>`:'—'}</div></div>
+          <div><div class="k">Հեռախոս</div><div class="v"><a href="tel:${esc(r.phone)}">${esc(r.phone)||'—'}</a></div></div>
+          <div><div class="k">Մասնագիտություն</div><div class="v">${esc(r.profession)||'—'}</div></div>
+          <div><div class="k">Աշխատում է</div><div class="v">${isYes(r.is_working)?'<span class="yes">Այո</span>':'<span class="no">Ոչ</span>'}</div></div>
+          <div><div class="k">Հաստատություն</div><div class="v">${esc(r.workplace)||'—'}</div></div>
+          <div><div class="k">ՈՒՁ փորձ</div><div class="v">${esc(r.ultrasound_experience)||'—'}</div></div>
+        </div>
+        <div class="courses-label">Ընտրված դասընթաց(ներ)</div>
+        <div class="courses-box">${esc(r.course)||'—'}</div>
+        <div class="edit-row">
+          <div class="fld"><label>Կարգավիճակ</label>
+            <select class="status ${cls}" onchange="setStatus(${r.row}, this.value, this)">
+              ${STATUSES.map(k=>`<option value="${k}" ${k===st?'selected':''}>${k}</option>`).join('')}
+            </select>
+          </div>
+          <div class="fld grow"><label>Նշում</label>
+            <input class="noteinp" value="${esc(r.notes)}" placeholder="..." onchange="setNote(${r.row}, this.value)" />
+          </div>
+        </div>
+      </div>`;
+    list.appendChild(card);
   });
+}
+
+function toggle(row, ev){
+  if(ev) ev.stopPropagation();
+  const card=document.querySelector(`.person[data-row="${row}"]`);
+  if(!card) return;
+  const body=card.querySelector('.person-body');
+  const isOpen=!body.hidden;
+  if(isOpen){ body.hidden=true; card.classList.remove('open'); expanded.delete(row); }
+  else { body.hidden=false; card.classList.add('open'); expanded.add(row); }
 }
 
 function save(row, field, value){
@@ -281,10 +321,12 @@ function save(row, field, value){
     headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(payload) });
 }
 function setStatus(row, val, el){
-  el.className = 'status ' + STATUS_CLASS[val];
   const rec = DATA.find(r=>r.row===row); if(rec) rec.status = val;
+  el.className = 'status ' + STATUS_CLASS[val];
+  const card=document.querySelector(`.person[data-row="${row}"]`);
+  if(card){ const pill=card.querySelector('.status-pill'); if(pill){ pill.className='status-pill '+STATUS_CLASS[val]; pill.textContent=val; } }
+  updateStats();
   save(row, 'status', val);
-  render();
 }
 function setNote(row, val){
   const rec = DATA.find(r=>r.row===row); if(rec) rec.notes = val;
@@ -301,10 +343,10 @@ function deleteSelected(){
   if(!confirm('Ջնջե՞լ ընտրված ' + rows.length + ' գրանցումը։ Այս գործողությունը հետ չի վերադարձվում։')) return;
   fetch(SCRIPT_URL, { method:'POST', mode:'no-cors',
     headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify({ action:'delete', key:PWD, rows:rows }) });
-  DATA = DATA.filter(r=>!rows.includes(r.row));  // instant feedback
-  const sa = document.getElementById('selAll'); if(sa) sa.checked = false;
+  DATA = DATA.filter(r=>!rows.includes(r.row));
+  const sa=document.getElementById('selAll'); if(sa) sa.checked=false;
   render();
-  setTimeout(reload, 1600);  // refresh row numbers from the server
+  setTimeout(reload, 1600);
 }
 
 function exportCSV(){
