@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiarmaMed — Launching Soon</title>
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+  :root {
+    --gold-light: #e8c968;
+    --gold: #c9a227;
+    --gold-deep: #8a6d1f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .logo {
+    width: min(340px, 68vw);
+    height: auto;
+    display: block;
+    animation: breathe 4.5s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.045); opacity: 0.92; }
+  }
+
+  .tagline {
+    margin-top: 2.5rem;
+    font-size: clamp(1.6rem, 6vw, 3rem);
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    /* indent compensates for the trailing letter-spacing so text stays centered */
+    text-indent: 0.42em;
+    background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--gold);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <img class="logo" src="logo.png" alt="MiarmaMed logo">
+  <div class="tagline">Launching Soon</div>
+</body>
+</html>
